@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b779e09-cddf-464a-b17e-0a8420dd563c" name="Changes" comment="- same as before">
+    <list default="true" id="1b779e09-cddf-464a-b17e-0a8420dd563c" name="Changes" comment="- added changes, made verfied table for project demo">
+      <change afterPath="$PROJECT_DIR$/utils/T_ESP/T_ESP.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend-ARC/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend-ARC/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend-ARC/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend-ARC/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend-ARC/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend-ARC/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +85,7 @@
       <workItem from="1762268659449" duration="1545000" />
       <workItem from="1762301018214" duration="16000" />
       <workItem from="1762396003954" duration="18000" />
-      <workItem from="1762488236404" duration="7533000" />
+      <workItem from="1762488236404" duration="9333000" />
     </task>
     <task id="LOCAL-00001" summary="- same as before">
       <option name="closed" value="true" />
@@ -98,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762488561039</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="- added changes, made verfied table for project demo">
+      <option name="closed" value="true" />
+      <created>1762526250925</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762526250925</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +111,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- same as before" />
-    <option name="LAST_COMMIT_MESSAGE" value="- same as before" />
+    <MESSAGE value="- added changes, made verfied table for project demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added changes, made verfied table for project demo" />
   </component>
 </project>
