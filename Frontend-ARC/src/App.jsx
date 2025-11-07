@@ -91,7 +91,7 @@ function App() {
                             <tr>
                                 <th>Timestamp</th>
                                 <th>Time (Local)</th>
-                                <th>Message</th>
+                                <th>Status</th>
                             </tr>
                             </thead>
                             <tbody>
