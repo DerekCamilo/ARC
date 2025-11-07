@@ -1,42 +1,55 @@
-#root {
-  max-width: 1280px;
+.container {
+  width: 100vw;
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
   margin: 0 auto;
-  padding: 2rem;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+  box-sizing: border-box;
+}
+
+.title {
   text-align: center;
+  margin-bottom: 20px;
+  color: #0078d7;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.loading,
+.error,
+.no-logs {
+  text-align: center;
+  font-size: 1rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.error {
+  color: red;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.log-table {
+  width: 40%;
+  background-color: rgb(99, 99, 99);
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.card {
-  padding: 2em;
+.log-table thead {
+  background-color: #0078d7;
+  color: white;
 }
 
-.read-the-docs {
-  color: #888;
+.log-table th,
+.log-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.log-table tbody tr:hover {
+  background-color: #929292;
 }

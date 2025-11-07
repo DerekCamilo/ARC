@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [logs, setLogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchLogs = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/logs");
+      setLogs(res.data);
+      setError(null);
+    } catch (err) {
+      console.error("Error fetching logs:", err);
+      setError("Failed to load logs");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLogs();
+    const interval = setInterval(fetchLogs, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (loading) return <p className="loading">Loading logs...</p>;
+  if (error) return <p className="error">{error}</p>;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>``
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container">
+      <h2 className="title"> Recent NFC Logs</h2>
+
+      {logs.length === 0 ? (
+        <p className="no-logs">No logs found.</p>
+      ) : (
+        <table className="log-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Time (Local)</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            {logs.map((log) => (
+              <tr key={log.timestamp}>
+                <td>{log.timestamp}</td>
+                <td>{new Date(log.timestamp).toLocaleString()}</td>
+                <td>{log.message}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
