@@ -36,6 +36,7 @@ app.use(
 
 app.use(express.text());
 
+//LOGS API ROUTE
 app.get("/api/logs", async (req, res) => {
   try {
     const snapshot = await db.ref("Log").orderByKey().limitToLast(10).once("value");
@@ -55,6 +56,29 @@ app.get("/api/logs", async (req, res) => {
     res.status(500).json({ error: "Error reading logs" });
   }
 });
+
+
+//VERIFIED API ROUTE
+app.get("/api/verified", async (req, res) => {
+    try {
+        const snapshot = await db.ref("Verified").orderByKey().limitToLast(10).once("value");
+        const verified = snapshot.val() || {};
+
+        const entries = Object.entries(verified)
+            .map(([ts, msg]) => ({
+                timestamp: Number(ts),
+                time: new Date(Number(ts)).toISOString(),
+                message: msg,
+            }))
+            .sort((a, b) => a.timestamp - b.timestamp);
+
+        res.json(entries);
+    } catch (err) {
+        console.error("Error reading verified:", err);
+        res.status(500).json({ error: "Error reading verified entries" });
+    }
+});
+
 
 
 const PORT = process.env.PORT || 4000;

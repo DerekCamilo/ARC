@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b779e09-cddf-464a-b17e-0a8420dd563c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/esp_now_working.ino" afterDir="false" />
+    <list default="true" id="1b779e09-cddf-464a-b17e-0a8420dd563c" name="Changes" comment="- same as before">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend-ARC/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend-ARC/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend-ARC/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend-ARC/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend-ARC/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend-ARC/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +33,12 @@
     &quot;assignee&quot;: &quot;DerekCamilo&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/DerekCamilo/ARC&quot;,
-    &quot;accountId&quot;: &quot;550fc2f0-1684-4b26-8955-4ec2468dc186&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/DerekCamilo/ARC",
+    "accountId": "c7e890c8-30ee-40cd-b85b-592377fb4e8c"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -84,11 +88,24 @@
       <workItem from="1762268659449" duration="1545000" />
       <workItem from="1762301018214" duration="16000" />
       <workItem from="1762396003954" duration="18000" />
-      <workItem from="1762488236404" duration="188000" />
+      <workItem from="1762488236404" duration="7533000" />
     </task>
+    <task id="LOCAL-00001" summary="- same as before">
+      <option name="closed" value="true" />
+      <created>1762488561039</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762488561039</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- same as before" />
+    <option name="LAST_COMMIT_MESSAGE" value="- same as before" />
   </component>
 </project>
