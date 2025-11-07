@@ -99,7 +99,7 @@ function App() {
                                 <tr key={v.timestamp}>
                                     <td>{v.timestamp}</td>
                                     <td>{new Date(v.timestamp).toLocaleString()}</td>
-                                    <td>{v.message}</td>
+                                    <td>{v.message === true ? "Verified" : "Rejected"}</td>
                                 </tr>
                             ))}
                             </tbody>
