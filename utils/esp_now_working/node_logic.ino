@@ -40,7 +40,7 @@ Adafruit_PN532 nfc(PN532_CS);
 uint8_t peerMac[6] = {0x04, 0x83, 0x08, 0x74, 0xEE, 0x9C};
 
 // SSID of the WiFi / Connection
-static const char* HUB_SSID = "I209-3000@ENCLAVE";
+static const char* HUB_SSID = "Bycc";
 
 // Helper function that finds the channel of the WiFi / connection
 static uint8_t findApChannel(const char* ssid) {
