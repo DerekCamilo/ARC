@@ -1,114 +1,105 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Grid, Card, CardContent, Typography, Box } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CancelIcon from "@mui/icons-material/Cancel";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import "./App.css";
 
-function App() {
-    //STATE VARIABLES
-  const [logs, setLogs] = useState([]);
-  const [verified, setVerified] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export default function App() {
+    const [logs, setLogs] = useState([]);
+    const [verified, setVerified] = useState([]);
+    const [loading, setLoading] = useState(true);
 
+    const fetchLogs = async () => {
+        try {
+            const res = await axios.get("http://localhost:4000/api/logs");
+            setLogs(res.data);
+        } catch (err) {
+            console.error("Error fetching logs:", err);
+        }
+    };
 
-  //ASYNCHRONOUS CALL FOR FETCHING LOGS
-  const fetchLogs = async () => {
-    try {
-      const res = await axios.get("http://localhost:4000/api/logs");
-      setLogs(res.data);
-      setError(null);
-    } catch (err) {
-      console.error("Error fetching logs:", err);
-      setError("Failed to load logs");
-    } finally {
-      setLoading(false);
-    }
-  };
-    //ASYNCHRONOUS CALL FOR FETCHING VERIFIED TABLE
     const fetchVerified = async () => {
         try {
             const res = await axios.get("http://localhost:4000/api/verified");
             setVerified(res.data);
-            setError(null);
         } catch (err) {
             console.error("Error fetching verified:", err);
-            setError("Failed to load verified");
-        } finally {
-            setLoading(false);
         }
     };
 
-    //REACT USE-EFFECT
-  useEffect(() => {
-    fetchLogs();
-    fetchVerified();
-    const interval = setInterval(fetchLogs, 10000);
-    return () => clearInterval(interval);
-  }, []);
+    useEffect(() => {
+        const load = async () => {
+            await fetchLogs();
+            await fetchVerified();
+            setLoading(false);
+        };
+        load();
 
-  if (loading) return <p className="loading">Loading logs...</p>;
-  if (error) return <p className="error">{error}</p>;
+        const interval = setInterval(fetchLogs, 10000);
+        return () => clearInterval(interval);
+    }, []);
+
+    if (loading) return <p className="loading">Loading content...</p>;
+
+    // Function to find the next most recent verified entry after a log timestamp
+    const findMatch = (logTs) => {
+        const logTime = new Date(logTs).getTime();
+
+        const candidates = verified
+            .filter((v) => new Date(v.timestamp).getTime() >= logTime)
+            .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+        return candidates.length > 0 ? candidates[0] : null;
+    };
 
     return (
-        <div className="container">
-            <h2 className="title">Recent NFC Logs</h2>
+        <div className="mui-container">
+            <h1 className="page-title">NFC Dashboard</h1>
 
-            <div className="tables-wrapper">
-                {/* LOGS TABLE */}
-                <div className="table-section">
-                    <h3>Logs</h3>
-                    {logs.length === 0 ? (
-                        <p className="no-logs">No logs found.</p>
-                    ) : (
-                        <table className="log-table">
-                            <thead>
-                            <tr>
-                                <th>Timestamp</th>
-                                <th>Time (Local)</th>
-                                <th>Message</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {logs.map((log) => (
-                                <tr key={log.timestamp}>
-                                    <td>{log.timestamp}</td>
-                                    <td>{new Date(log.timestamp).toLocaleString()}</td>
-                                    <td>{log.message}</td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
-                    )}
-                </div>
+            <Grid container spacing={3} className="grid-wrapper">
+                {logs.map((log, i) => {
+                    const match = findMatch(log.timestamp);
 
-                {/* VERIFIED TABLE */}
-                <div className="table-section">
-                    <h3>Verified</h3>
-                    {verified.length === 0 ? (
-                        <p className="no-logs">No verified entries found.</p>
-                    ) : (
-                        <table className="log-table">
-                            <thead>
-                            <tr>
-                                <th>Timestamp</th>
-                                <th>Time (Local)</th>
-                                <th>Status</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {verified.map((v) => (
-                                <tr key={v.timestamp}>
-                                    <td>{v.timestamp}</td>
-                                    <td>{new Date(v.timestamp).toLocaleString()}</td>
-                                    <td>{v.message === true ? "Verified" : "Rejected"}</td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
-                    )}
-                </div>
-            </div>
+                    return (
+                        <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
+                            <Card className="mui-card">
+                                <CardContent>
+                                    {/* Profile Icon */}
+                                    <Box className="icon-wrap">
+                                        <PersonIcon fontSize="large" className="profile-icon" />
+                                    </Box>
+
+                                    {/* Log Name */}
+                                    <Typography variant="h6" className="item-title">
+                                        {log.message}
+                                    </Typography>
+
+                                    {/* Timestamp */}
+                                    <Typography variant="body2" className="timestamp">
+                                        {new Date(log.timestamp).toLocaleString()}
+                                    </Typography>
+
+                                    {/* Status */}
+                                    <Box className="status-icons">
+                                        {match ? (
+                                            match.message === true ? (
+                                                <CheckCircleIcon className="accepted" />
+                                            ) : (
+                                                <CancelIcon className="rejected" />
+                                            )
+                                        ) : (
+                                            <HelpOutlineIcon className="pending" />
+                                        )}
+                                    </Box>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    );
+                })}
+            </Grid>
         </div>
     );
 }
-
-export default App;

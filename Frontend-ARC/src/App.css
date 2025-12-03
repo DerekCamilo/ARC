@@ -1,81 +1,100 @@
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: "Segoe UI", sans-serif;
-  box-sizing: border-box;
+/* Page Wrapper */
+.mui-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
 }
 
-.title {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #0078d7;
+/* Titles */
+.page-title {
+    text-align: center;
+    color: #90caf9;
+    margin-bottom: 40px;
+    font-size: 2.8rem;
 }
 
-.loading,
-.error,
-.no-logs {
-  text-align: center;
-  font-size: 1rem;
+.section-title {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    color: #bbdefb;
 }
 
-.error {
-  color: red;
+/* Grid wrapper */
+.grid-wrapper {
+    margin-bottom: 40px;
 }
 
-.log-table {
-  width: 40%;
-  background-color: rgb(99, 99, 99);
-  border-collapse: collapse;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
+/*  Card Style */
+.mui-card {
+    background: #2c2c2c;
+    border-radius: 16px !important;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.log-table thead {
-  background-color: #0078d7;
-  color: white;
+.mui-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
 
-.log-table th,
-.log-table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-  font-size: 0.95rem;
-}
-
-.log-table tbody tr:hover {
-  background-color: #929292;
-}
-
-.tables-wrapper {
+/* Profile Icon container */
+.icon-wrap {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 40px; /* space between tables */
-    flex-wrap: wrap; /* makes it responsive on small screens */
-    width: 100%;
-    max-width: 1200px;
-}
-
-.table-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.table-section h3 {
-    color: #0078d7;
     margin-bottom: 10px;
 }
 
-.log-table {
-    width: 100%;
-    max-width: 500px;
+.profile-icon {
+    color: #90caf9;
+    font-size: 45px !important;
+}
+
+/* Card title */
+.item-title {
+    text-align: center;
+    color: #676e78; /* grey */
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Timestamp */
+.timestamp {
+    text-align: center;
+    color: #b0bec5;
+    margin-bottom: 20px;
+}
+
+/* Status icons */
+.status-icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.accepted {
+    color: #66bb6a !important;
+    font-size: 32px !important;
+}
+
+.rejected {
+    color: #ef5350 !important;
+    font-size: 32px !important;
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.pending {
+    color: #ffeb3b !important; /* yellow */
+    font-size: 32px !important;
 }
